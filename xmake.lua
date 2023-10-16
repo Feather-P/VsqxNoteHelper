@@ -3,8 +3,11 @@ add_rules("mode.debug", "mode.release")
 add_requires("pugixml 1.13")
 --添加pugixml，指定版本为1.13
 
-target("NoteBlade")
+target("VsqxNoteHelper")
     set_kind("binary")
+    add_files("src/*.cpp")
+    add_packages("pugixml", {public = true})
+    --添加pugixml依赖到NoteBlade，并继承到子target
 
     if is_plat("macosx", "linux") then
         add_cxxflags("-std=c++17")
@@ -19,9 +22,7 @@ target("NoteBlade")
         add_cxxflags("/DBUILD_HOSTNAME=\"$(env computername)\"")
     end
     --Windows平台下的编译选项，采用C++17
-    add_files("src/*.cpp")
-    add_packages("pugixml", {public = true})
-    --添加pugixml依赖到NoteBlade，并继承到子target
+
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
