@@ -104,12 +104,15 @@ namespace VsqxNoteHelper {
                 int opening;//也许是开口度？
                 int risePort;//参数6
             };
-            class singer{
+            Pstyle pstyle;
+            class Singer{
                 int pc;//歌姬的值
                 int bs;//也许是每秒拍数？ beats per second=bs?
                 int t;//应该是起始时间
             };
+            Singer singer;
         };
+        Part part;;
     };
 }
 
