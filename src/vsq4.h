@@ -220,35 +220,6 @@ namespace VsqxNoteHelper{
         Aux aux;
     private:
     };
-
-    class Track {
-    public:
-        int tracknumber;//track编号，tracknumber
-        std::string name;//歌姬名字;name
-        std::string comment;//comment
-        class Part{
-        public:
-            int t;//应该是起始时间
-            unsigned int playtime;//不知道，playtime
-            class Pstyle{
-                int accent;//参数1,accent
-                int bendDep;//参数2,bendDep
-                int bendLen;//参数3,bendLen
-                int decay;//参数4,decay
-                int Fallport;//参数5,Fallport
-                int opening;//也许是开口度？，opening
-                int risePort;//参数6,risePort
-            };
-            Pstyle pstyle;
-            class Singer{
-                int pc;//歌姬的值，pc
-                int bs;//也许是每秒拍数？ beats per second=bs?,bs
-                int t;//应该是起始时间，t
-            };
-            Singer singer;
-        };
-        Part part;;
-    };
 }
 
 #endif
