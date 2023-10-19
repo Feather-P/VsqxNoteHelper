@@ -11,6 +11,6 @@ int main(int argc, char** argv)
     vsqx.voiceTable.voice.push_back(i);
    vsqx.voiceTable.voice[0].pc=10;
    std::cout<<vsqx.voiceTable.voice[0].pc<<std::endl;
-   std::cout<<VsqxNoteHelper::VsqxPitch(0);
+   std::cout<<VsqxNoteHelper::VsqxPitch(0);//Pitch Test
     return 0;
 }

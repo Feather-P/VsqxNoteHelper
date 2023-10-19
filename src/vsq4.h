@@ -10,12 +10,12 @@ namespace VsqxNoteHelper{
 
     class Vsq4{
     public:
-        void GetFileToRam(std::string filePath);
         class VoiceTable {//vVoiceTable
         public:
             class Voice {//vVoice
             public:
-                struct Parameter {//vsqx为Prm
+                class Parameter {//vsqx为Prm
+                public:
                     int bre;
                     int bri;
                     int cle;
@@ -24,8 +24,9 @@ namespace VsqxNoteHelper{
                 };
 
                 int bs;
+                int pc;
                 std::string id;
-                static std::map<std::string,std::string> pcandname;
+                std::string name;
                 Parameter parameter;
             };
 
@@ -43,7 +44,8 @@ namespace VsqxNoteHelper{
             };
             MasterUnit masterUnit;
 
-            struct Unit{//vsqx中为vsUnit
+            class Unit{//vsqx中为vsUnit
+            public:
                 int trackNunber;//vsqx为tNO
                 int inputGain;//vsqx为iGin
                 int sendLevel;//vsqx为sLvl
@@ -189,6 +191,10 @@ namespace VsqxNoteHelper{
             std::string content;
         };
         Aux aux;
+//End of vsqx file itself
+
+//begin of FUNCTION
+        void GetFileToRam(std::string filePath);
     private:
     };
 }
