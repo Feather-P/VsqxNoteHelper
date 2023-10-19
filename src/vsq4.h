@@ -186,6 +186,7 @@ namespace VsqxNoteHelper{
         };
         SteroTrack steroTrack;
         class Aux{//vsqx末尾不知道干啥用的，名字是aux
+        public:
             std::string id;
             std::string content;
         };
@@ -193,7 +194,7 @@ namespace VsqxNoteHelper{
 //End of vsqx file itself
 
 //begin of FUNCTION
-        void GetFileToRam(std::string filePath);
+        void ReadVsqx(std::string filePath);
     private:
     };
 }
