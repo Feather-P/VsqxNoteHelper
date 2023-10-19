@@ -5,17 +5,17 @@
 #include<vector>
 #include<array>
 #include<iostream>
-
+#include <map>
 namespace VsqxNoteHelper{
 
     class Vsq4{
     public:
+        void GetFileToRam(std::string filePath);
         class VoiceTable {//vVoiceTable
         public:
             class Voice {//vVoice
             public:
-                class Parameter {//vsqx为Prm
-                public:
+                struct Parameter {//vsqx为Prm
                     int bre;
                     int bri;
                     int cle;
@@ -24,9 +24,8 @@ namespace VsqxNoteHelper{
                 };
 
                 int bs;
-                int pc;//意ProgramContorl 需要和track部分配合获取歌手信息
                 std::string id;
-                std::string name;
+                static std::map<std::string,std::string> pcandname;
                 Parameter parameter;
             };
 
@@ -38,13 +37,13 @@ namespace VsqxNoteHelper{
         public:
             class MasterUnit {//vsqx为masterUnit
             public:
-                int oDev;//不清楚什么意思好像改了没用
-                int returnLevel;//vsqx为rLvl
-                int volume;//vsqx为vol
+                static int oDev;//不清楚什么意思好像改了没用
+                static int returnLevel;//vsqx为rLvl
+                static int volume;//vsqx为vol
             };
             MasterUnit masterUnit;
 
-            class Unit{//vsqx中为vsUnit
+            struct Unit{//vsqx中为vsUnit
                 int trackNunber;//vsqx为tNO
                 int inputGain;//vsqx为iGin
                 int sendLevel;//vsqx为sLvl
@@ -193,5 +192,6 @@ namespace VsqxNoteHelper{
     private:
     };
 }
+
 
 #endif
