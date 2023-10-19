@@ -5,9 +5,8 @@
 #include<vector>
 #include<array>
 #include<iostream>
-#include <map>
-namespace VsqxNoteHelper{
 
+namespace VsqxNoteHelper{
     class Vsq4{
     public:
         class VoiceTable {//vVoiceTable
@@ -38,9 +37,9 @@ namespace VsqxNoteHelper{
         public:
             class MasterUnit {//vsqx为masterUnit
             public:
-                static int oDev;//不清楚什么意思好像改了没用
-                static int returnLevel;//vsqx为rLvl
-                static int volume;//vsqx为vol
+                int oDev;//不清楚什么意思好像改了没用
+                int returnLevel;//vsqx为rLvl
+                int volume;//vsqx为vol
             };
             MasterUnit masterUnit;
 
