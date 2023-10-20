@@ -4,7 +4,7 @@
 int main(int argc, char** argv)
 {
     std::cout << "请输入文件地址： " << std::endl;
-    VsqxNoteHelper::Vsq4 workingvsqx;
+    VsqxNoteHelper::vsq4 workingvsqx;
     std::string Filepath;
     std::cin>>Filepath;
     workingvsqx.ReadVsqx(Filepath);
@@ -12,7 +12,8 @@ return 0;
 
 }
 
-void VsqxNoteHelper::Vsq4::ReadVsqx(std::string filePath) {
+
+void VsqxNoteHelper::vsq4::ReadVsqx(std::string filePath) {
     // 加载文件
     pugi::xml_document vsqx;
     pugi::xml_parse_result result = vsqx.load_file(filePath.c_str());
@@ -22,10 +23,10 @@ void VsqxNoteHelper::Vsq4::ReadVsqx(std::string filePath) {
     // 获取vVoiceTable节点
     pugi::xml_node voicetable = vsqxRoot.child("vVoiceTable");
     // 获取vVoice节点数量
-    VsqxNoteHelper::Vsq4 vsq4;
+    vsq4 vsq4;
     for (pugi::xml_node voicenode = voicetable.child("vVoice"); voicenode; voicenode = voicenode.next_sibling(
             "vVoice")) {
-        VoiceTable::Voice tempvoice;
+        vsq4::Vsq4record::VoiceTable::Voice tempvoice;
         tempvoice.bs = std::stoi(voicenode.child("bs").value());
         tempvoice.pc = std::stoi(voicenode.child("pc").value());
         tempvoice.name = voicenode.child("name").value();
@@ -34,15 +35,15 @@ void VsqxNoteHelper::Vsq4::ReadVsqx(std::string filePath) {
         tempvoice.parameter.bre = std::stoi(voicenode.child("vPrm").child("bre").value());
         tempvoice.parameter.cle = std::stoi(voicenode.child("vPrm").child("cle").value());
         tempvoice.parameter.gen = std::stoi(voicenode.child("vPrm").child("gen").value());
-        vsq4.voiceTable.voice.push_back(tempvoice);
+        vsq4.Vsq4record.voiceTable.voice.push_back(tempvoice);
     }
     pugi::xml_node mixernode =vsqxRoot.child("mixer");
-    vsq4.mixer.masterUnit.oDev=std::stoi(mixernode.child("oDev").value());
-    vsq4.mixer.masterUnit.returnLevel=std::stoi(mixernode.child("rLvl").value());
-    vsq4.mixer.masterUnit.volume=std::stoi(mixernode.child("vol").value());
+    vsq4.Vsq4record.mixer.masterUnit.oDev=std::stoi(mixernode.child("oDev").value());
+    vsq4.Vsq4record.mixer.masterUnit.returnLevel=std::stoi(mixernode.child("rLvl").value());
+    vsq4.Vsq4record.mixer.masterUnit.volume=std::stoi(mixernode.child("vol").value());
     for (pugi::xml_node unitnode=mixernode.child("vsUnit");unitnode;unitnode=unitnode.next_sibling())
     {
-        Mixer::Unit tempunit;
+        vsq4::Vsq4record::Mixer::Unit tempunit;
         tempunit.trackNunber=std::stoi(unitnode.child("tNo").value());
         tempunit.inputGain=std::stoi(unitnode.child("iGin").value());
         tempunit.sendLevel=std::stoi(unitnode.child("sLvl").value());
@@ -51,7 +52,8 @@ void VsqxNoteHelper::Vsq4::ReadVsqx(std::string filePath) {
         tempunit.solo=(bool)std::stoi(unitnode.child("s").value());
         tempunit.pan=(short int)std::stoi(unitnode.child("pan").value());
         tempunit.volume=std::stoi(unitnode.child("vol").value());
-        vsq4.mixer.unit.push_back(tempunit);
+        vsq4.Vsq4record.mixer.unit.push_back(tempunit);
     }
     std::cout<<"function run well"<<std::endl;
+
 }
