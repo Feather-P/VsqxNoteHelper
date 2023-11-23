@@ -1,16 +1,15 @@
 #ifndef _VSQ4_H_
 #define _VSQ4_H_
-
-#include<pugixml.hpp>
+#include "pugixml.hpp"
 #include<vector>
 #include<array>
 #include<iostream>
 
 namespace VsqxNoteHelper {
-    class vsq4 {
+    class Vsq4 {
     public:
 
-        class Vsq4record {
+        class Vsq4Record {
         public:
             class VoiceTable {//vVoiceTable
             public:
@@ -212,15 +211,11 @@ namespace VsqxNoteHelper {
             };
 
             Aux aux;
-//End of vsqx file itself
-
-//begin of FUNCTION
-        private:
         };
-        Vsq4record Vsq4record;
+        Vsq4Record vsq4Record; 
+
         void ReadVsqx(std::string filePath);
     };
-
 }
 
 #endif
